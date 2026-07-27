@@ -11,3 +11,39 @@ It is a free, cloud-based Jupyter Notebook environment provided by Google, allow
 There are other code editing tools such as Visual Code Studio. But we will use Colab because it requires no installation.
 
 ### 2. Camelot (for 
+
+
+### 3. img2table
+For image-based PDF (scanned pdf)
+img2table is a Python Library for table identification and extraction.
+
+The python code
+```
+!pip install img2table
+!pip install pytesseract
+!apt-get install tesseract-
+
+from img2table.document import PDF
+from img2table.ocr import TesseractOCR
+
+pdf_path = “your_file.pdf" # replace "your_file.pdf" by the name of you actual pdf file. Here our pdf is called "docdoc.pdf".
+
+ocr = TesseractOCR(n_threads=1, lang="eng")  # Utilisez lang="fra" si le document est en français
+
+doc = PDF(pdf_path, detect_rotation=True)  # Detect_rotation est utile pour detecter les scans biaisés/retournés
+extracted_tables = doc.extract_tables(
+   ocr=ocr,
+    implicit_rows=False,
+    borderless_tables=True,
+   min_confidence=50
+)
+
+for page, tables in extracted_tables.items():
+    print(f"Page {page}: found {len(tables)} table(s)”)
+    for i, table in enumerate(tables):
+        df = table.df
+        print(df.head())
+        df.to_csv(f”extracted_table_page{page}_{i}.csv”, index=False)
+        df.to_excel(f"extracted_table_page{page}_{i}.xlsx", index=False)
+
+```
