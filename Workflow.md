@@ -14,7 +14,7 @@ There are other code editing tools such as Visual Code Studio. But we will use C
 
 
 ### 3. img2table
-For image-based PDF (scanned pdf)
+For image-based PDF (scanned pdf). Here you can find the document I used for this exercice. It is called "docdoc.pdf". (I printed an excel file and then scanned it to get an image-based PDF).
 img2table is a Python Library for table identification and extraction.
 
 The python code
@@ -26,11 +26,11 @@ The python code
 from img2table.document import PDF
 from img2table.ocr import TesseractOCR
 
-pdf_path = “your_file.pdf" # replace "your_file.pdf" by the name of you actual pdf file. Here our pdf is called "docdoc.pdf".
+pdf_path = “docdoc.pdf" # replace "docdoc.pdf" by the name of you actual pdf file. Here our pdf is called "docdoc.pdf".
 
-ocr = TesseractOCR(n_threads=1, lang="eng")  # Utilisez lang="fra" si le document est en français
+ocr = TesseractOCR(n_threads=1, lang="eng")  # Use lang="fra" if you document is in french.
 
-doc = PDF(pdf_path, detect_rotation=True)  # Detect_rotation est utile pour detecter les scans biaisés/retournés
+doc = PDF(pdf_path, detect_rotation=True)  # Detect_rotation is used to detect biased or rotated documents
 extracted_tables = doc.extract_tables(
    ocr=ocr,
     implicit_rows=False,
