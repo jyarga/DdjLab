@@ -1,6 +1,10 @@
+# Scraping all the articles published on a newswebsite, using an AI-assisted method
+We are going to use Python for scraping. And AI to generate the code lines. 
+The goal is to get all the articles published on a website in a csv file. 
+
 ## Writing my prompt
 
-First, observe carefully the content of the website you want to scrap. That will help describe as accurately as possile, when writing the prompt.
+The first thing I usually do is to observe carefully the content of the website I want to scrap. That will help describe as accurately as possile, when writing the prompt.
 Here my prompt template
 ```
 Here the link for a news website: [https://yourdomain.com/]
@@ -131,12 +135,12 @@ print("="*50 + "\n")
 df = pd.DataFrame(all_articles)
 display(df.head(10))
 
-csv_filename = "nordic_times_all_articles_monthly.csv"
+csv_filename = "tnt_articles.csv"
 df.to_csv(csv_filename, index=False, encoding="utf-8-sig")
 print(f"\nSaved file as '{csv_filename}'. Downloading now...")
 
 files.download(csv_filename)
 ```
-
+For the result, see file "tnt_articles.csv"
 
 
