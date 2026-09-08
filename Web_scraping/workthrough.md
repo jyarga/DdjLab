@@ -141,4 +141,4 @@ print(f"\nSaved file as '{csv_filename}'. Downloading now...")
 
 files.download(csv_filename)
 ```
-For the result, see file "tnt_articles.csv"
+For the result, see file "Web_scraping/tnt_articles.csv"
